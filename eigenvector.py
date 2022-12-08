@@ -48,9 +48,13 @@ if b != 0:
     eigenvector_1 = np.array([[eigenwaarde_1 - d], [int_check(sympy.sqrt(b)**2)]])
     eigenvector_2 = np.array([[eigenwaarde_2 - d], [int_check(sympy.sqrt(b)**2)]])
 
-else:
+elif c != 0:
     eigenvector_1 = np.array([[c], [eigenwaarde_1 - a]])
     eigenvector_2 = np.array([[c], [eigenwaarde_2 - a]])
+
+else:
+    eigenvector_1 = np.array([[1], [0]])
+    eigenvector_2 = np.array([[0], [1]])
 
 print(f"De eigenwaardes zijn {eigenwaarde_1} en {eigenwaarde_2}.")
 print(f"Bij de eigenwaarde {eigenwaarde_1} hoort de eigenvector:")

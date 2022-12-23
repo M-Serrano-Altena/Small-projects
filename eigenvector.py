@@ -5,11 +5,7 @@
 import numpy as np
 import sympy
 import fractions
-
-def int_check(num):
-    if sympy.im(num) == 0 and sympy.re(num) % 1 == 0:
-        return int(sympy.re(num))
-    return num
+from polynomial import *
 
 complx = 0
 A = np.array([['a','c'], ['b','d']])
@@ -17,15 +13,10 @@ print(f"A =")
 print(A)
 print(f"Voer bij matrix A de a, b, c en d in.")
 
-a = complex(input("a = "))
-b = complex(input("b = "))
-c = complex(input("c = "))
-d = complex(input("d = "))
-
-a = int_check(a)
-b = int_check(b)
-c = int_check(c)
-d = int_check(d)
+a = int_check(complex(input("a = ")))
+b = int_check(complex(input("b = ")))
+c = int_check(complex(input("c = ")))
+d = int_check(complex(input("d = ")))
 
 square_root = 1/4*(a-d)**2 + b*c
 real = sympy.sqrt(square_root.real)
@@ -38,11 +29,9 @@ else:
     imaginairy_1, imaginairy_2 = imaginairy, 1
 
 imaginairy = sympy.sqrt(int(imaginairy_1))/sympy.sqrt(int(imaginairy_2))*(1/sympy.sqrt(2) + 1/sympy.sqrt(2)*1j)
-eigenwaarde_1 = sympy.simplify(1/2 * (a + d) + (real + imaginairy))
-eigenwaarde_2 = sympy.simplify(1/2 * (a + d) - (real + imaginairy))
+eigenwaarde_1 = int_check(sympy.simplify(1/2 * (a + d) + (real + imaginairy)))
+eigenwaarde_2 = int_check(sympy.simplify(1/2 * (a + d) - (real + imaginairy)))
 
-eigenwaarde_1 = int_check(eigenwaarde_1)
-eigenwaarde_2 = int_check(eigenwaarde_2)
 
 if b != 0:
     eigenvector_1 = np.array([[eigenwaarde_1 - d], [int_check(sympy.sqrt(b)**2)]])

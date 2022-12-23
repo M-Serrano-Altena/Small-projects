@@ -7,6 +7,8 @@ import sympy
 import fractions
 from polynomial import *
 
+
+
 complx = 0
 A = np.array([['a','c'], ['b','d']])
 print(f"A =")

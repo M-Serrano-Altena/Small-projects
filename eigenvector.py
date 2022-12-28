@@ -63,16 +63,23 @@ def matrix_3x3():
     eigenwaarde_1, eigenwaarde_2, eigenwaarde_3 = cubic(1, -(a + e + i), (a*e + a*i + e*i - b*d - c*g - f*h),  - (a*e*i - a*f*h - b*d*i + b*f*g + c*d*h - c*e*g))
     print(f"De eigenwaardes zijn {eigenwaarde_1}, {eigenwaarde_2} en {eigenwaarde_3}.")
 
-    eigenvector_1 = sp.linsolve(sp.Matrix(([a-eigenwaarde_1, d, g, 0], [b, e - eigenwaarde_1, h, 0], [c, f, i - eigenwaarde_1, 0])))
-    eigenvector_2 = sp.linsolve(sp.Matrix(([a-eigenwaarde_2, d, g, 0], [b, e - eigenwaarde_2, h, 0], [c, f, i - eigenwaarde_2, 0])))
-    eigenvector_3 = sp.linsolve(sp.Matrix(([a-eigenwaarde_3, d, g, 0], [b, e - eigenwaarde_3, h, 0], [c, f, i - eigenwaarde_3, 0])))
+    eigenvector_1 = np.array([[sp.nsimplify(g*(eigenwaarde_1 - e) + d*h)], [sp.nsimplify(h*(eigenwaarde_1 - a) + b*g)], [sp.nsimplify((eigenwaarde_1 - a)*(eigenwaarde_1 - e) - b*d)]])
+    eigenvector_2 = np.array([[sp.nsimplify(g*(eigenwaarde_2 - e) + d*h)], [sp.nsimplify(h*(eigenwaarde_2 - a) + b*g)], [sp.nsimplify((eigenwaarde_2 - a)*(eigenwaarde_2 - e) - b*d)]])
+    eigenvector_3 = np.array([[sp.nsimplify(g*(eigenwaarde_3 - e) + d*h)], [sp.nsimplify(h*(eigenwaarde_3 - a) + b*g)], [sp.nsimplify((eigenwaarde_3 - a)*(eigenwaarde_3 - e) - b*d)]])
 
-    print(eigenvector_1)
-
-    print(f"Bij de eigenwaarde {eigenwaarde_1} hoort eigenvector {eigenvector_1}")
-    print(f"Bij de eigenwaarde {eigenwaarde_2} hoort eigenvector {eigenvector_2}")
-    print(f"Bij de eigenwaarde {eigenwaarde_3} hoort eigenvector {eigenvector_3}")
+    print(f"Bij de eigenwaarde {eigenwaarde_1} hoort eigenvector:")
+    print(f"{eigenvector_1}")
+    print(f"Bij de eigenwaarde {eigenwaarde_2} hoort eigenvector:")
+    print(f"{eigenvector_2}")
+    print(f"Bij de eigenwaarde {eigenwaarde_3} hoort eigenvector:")
+    print(f"{eigenvector_3}")
     
+matrix_size = 0
+while matrix_size != 2 and matrix_size != 3:
+    matrix_size = int(input(f"Is de matrix 2x2 (voer in: 2) of 3x3 (voer in: 3): "))
 
-# matrix_2x2()
-matrix_3x3()
+if matrix_size == 2:
+    matrix_2x2()
+
+elif matrix_size == 3:
+    matrix_3x3()

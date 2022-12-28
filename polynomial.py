@@ -3,7 +3,6 @@
 # gives the solution to a quadratic and cubic equation
 # --> sympy.solve() 
 
-# TODO: laten werken voor complexe oplossingen
 
 import sympy as sp
 

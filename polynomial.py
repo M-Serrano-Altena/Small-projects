@@ -6,16 +6,9 @@
 
 import sympy as sp
 
-
-def int_check(num):
-    if sp.im(num) == 0 and sp.re(num) % 1 == 0:
-        return int(sp.re(num))
-    return num
-
-
 def quadratic(a, b, c):
-    x1 = int_check(1/(2*a)*(-b + sp.sqrt(b**2 - 4*a*c)))
-    x2 = int_check(1/(2*a)*(-b - sp.sqrt(b**2 - 4*a*c)))
+    x1 = sp.nsimplify(1/(2*a)*(-b + sp.sqrt(b**2 - 4*a*c)))
+    x2 = sp.nsimplify(1/(2*a)*(-b - sp.sqrt(b**2 - 4*a*c)))
     return x1, x2
 
 
@@ -48,8 +41,9 @@ def cubic(a, b, c, d):
 
     return sp.nsimplify(x1), sp.nsimplify(x2), sp.nsimplify(x3)
 
-x1, x2, x3 = cubic(1, 1, 1, 1)
-print("The solutions to the cubic equation are:")
-print(f"x1 = {x1}")
-print(f"x2 = {x2}")
-print(f"x3 = {x3}")
+if __name__ == '__main__':
+    x1, x2, x3 = cubic(1, 1, 1, 1)
+    print("The solutions to the cubic equation are:")
+    print(f"x1 = {x1}")
+    print(f"x2 = {x2}")
+    print(f"x3 = {x3}")

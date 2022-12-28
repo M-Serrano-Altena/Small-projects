@@ -62,6 +62,9 @@ def matrix_3x3():
     x = sp.Symbol('x')
     eigenwaarde_1, eigenwaarde_2, eigenwaarde_3 = sp.solve(x**3 - (a + e + i)*x**2 + (a*e + a*i + e*i - b*d - c*g - f*h)*x - (a*e*i - a*f*h - b*d*i + b*f*g + c*d*h - c*e*g))
     print(f"De eigenwaardes zijn {eigenwaarde_1}, {eigenwaarde_2} en {eigenwaarde_3}.")
+
+    # eigenvector_1 = sp.linsolve(sp.Matrix(([a-eigenwaarde_1, d, g, 0], [b, e - eigenwaarde_1, h, 0], [c, f, i - eigenwaarde_1, 0])))
     
 
+matrix_2x2()
 matrix_3x3()

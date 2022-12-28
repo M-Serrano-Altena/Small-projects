@@ -4,6 +4,7 @@
 
 import numpy as np
 import sympy as sp
+from polynomial import *
 
 def int_check(num):
     if sp.im(num) == 0 and sp.re(num) % 1 == 0:
@@ -22,7 +23,7 @@ def matrix_2x2():
     d = int_check(complex(input("d = ")))
 
     x = sp.Symbol('x')
-    eigenwaarde_1, eigenwaarde_2 = sp.solve(x**2 - (a+d)*x + a*d - b*c)
+    eigenwaarde_1, eigenwaarde_2 = quadratic(1, -(a+d), a*d - b*c)
 
     if b != 0:
         eigenvector_1 = np.array([[eigenwaarde_1 - d], [b]])
@@ -59,12 +60,19 @@ def matrix_3x3():
     h = int_check(complex(input("h = ")))    
     i = int_check(complex(input("i = ")))
 
-    x = sp.Symbol('x')
-    eigenwaarde_1, eigenwaarde_2, eigenwaarde_3 = sp.solve(x**3 - (a + e + i)*x**2 + (a*e + a*i + e*i - b*d - c*g - f*h)*x - (a*e*i - a*f*h - b*d*i + b*f*g + c*d*h - c*e*g))
+    eigenwaarde_1, eigenwaarde_2, eigenwaarde_3 = cubic(1, -(a + e + i), (a*e + a*i + e*i - b*d - c*g - f*h),  - (a*e*i - a*f*h - b*d*i + b*f*g + c*d*h - c*e*g))
     print(f"De eigenwaardes zijn {eigenwaarde_1}, {eigenwaarde_2} en {eigenwaarde_3}.")
 
-    # eigenvector_1 = sp.linsolve(sp.Matrix(([a-eigenwaarde_1, d, g, 0], [b, e - eigenwaarde_1, h, 0], [c, f, i - eigenwaarde_1, 0])))
+    eigenvector_1 = sp.linsolve(sp.Matrix(([a-eigenwaarde_1, d, g, 0], [b, e - eigenwaarde_1, h, 0], [c, f, i - eigenwaarde_1, 0])))
+    eigenvector_2 = sp.linsolve(sp.Matrix(([a-eigenwaarde_2, d, g, 0], [b, e - eigenwaarde_2, h, 0], [c, f, i - eigenwaarde_2, 0])))
+    eigenvector_3 = sp.linsolve(sp.Matrix(([a-eigenwaarde_3, d, g, 0], [b, e - eigenwaarde_3, h, 0], [c, f, i - eigenwaarde_3, 0])))
+
+    print(eigenvector_1)
+
+    print(f"Bij de eigenwaarde {eigenwaarde_1} hoort eigenvector {eigenvector_1}")
+    print(f"Bij de eigenwaarde {eigenwaarde_2} hoort eigenvector {eigenvector_2}")
+    print(f"Bij de eigenwaarde {eigenwaarde_3} hoort eigenvector {eigenvector_3}")
     
 
-matrix_2x2()
+# matrix_2x2()
 matrix_3x3()

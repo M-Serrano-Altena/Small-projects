@@ -20,29 +20,29 @@ def cubic(a, b, c, d):
     u = sp.nsimplify(sp.cbrt(-q/2 + sp.sqrt((q**2)/4 + (p**3)/27)))
     v = sp.nsimplify(sp.cbrt(-q/2 - sp.sqrt((q**2)/4 + (p**3)/27)))
 
-    if round(sp.re(sp.simplify(3*u*v + p)), 10) == 0 and round(sp.im(sp.simplify(3*u*v + p)), 10) == 0:
-        x1 = round(sp.re(sp.simplify(u + v - b/(3*a))), 10) + round(sp.im(sp.simplify(u + v - b/(3*a))), 10)*1j
-        x2 = round(sp.re(sp.simplify(u*w**2 + v*w - b/(3*a))), 10) + round(sp.im(sp.simplify(u*w**2 + v*w - b/(3*a))), 10)*1j
-        x3 = round(sp.re(sp.simplify(u*w + v*w**2 - b/(3*a))), 10) + round(sp.im(sp.simplify(u*w + v*w**2 - b/(3*a))), 10)*1j
+    if round(sp.re(sp.nsimplify(sp.simplify(3*u*v + p))), 10) == 0 and round(sp.im(sp.nsimplify(sp.simplify(3*u*v + p))), 10) == 0:
+        x1 = round(sp.re(sp.nsimplify(sp.simplify(u + v - b/(3*a)))), 10) + round(sp.im(sp.nsimplify(sp.simplify(u + v - b/(3*a)))), 10)*1j
+        x2 = round(sp.re(sp.nsimplify(sp.simplify(u*w**2 + v*w - b/(3*a)))), 10) + round(sp.im(sp.nsimplify(sp.simplify(u*w**2 + v*w - b/(3*a)))), 10)*1j
+        x3 = round(sp.re(sp.nsimplify(sp.simplify(u*w + v*w**2 - b/(3*a)))), 10) + round(sp.im(sp.nsimplify(sp.simplify(u*w + v*w**2 - b/(3*a)))), 10)*1j
 
-    elif round(sp.re(sp.simplify(3*u*v*w + p)), 10) == 0 and round(sp.im(sp.simplify(3*u*v*w + p)), 10) == 0:
-        x1 = round(sp.re(sp.simplify(u + v*w - b/(3*a))), 10) + round(sp.im(sp.simplify(u + v*w - b/(3*a))), 10)*1j
-        x2 = round(sp.re(sp.simplify(u*w + v - b/(3*a))), 10) + round(sp.im(sp.simplify(u*w + v - b/(3*a))), 10)*1j
-        x3 = round(sp.re(sp.simplify(u*w**2 + v*w**2 - b/(3*a))), 10) + round(sp.im(sp.simplify(u*w**2 + v*w**2 - b/(3*a))), 10)*1j
+    elif round(sp.re(sp.nsimplify(sp.simplify(3*u*v*w + p))), 10) == 0 and round(sp.im(sp.nsimplify(sp.simplify(3*u*v*w + p))), 10) == 0:
+        x1 = round(sp.re(sp.nsimplify(sp.simplify(u + v*w - b/(3*a)))), 10) + round(sp.im(sp.nsimplify(sp.simplify(u + v*w - b/(3*a)))), 10)*1j
+        x2 = round(sp.re(sp.nsimplify(sp.simplify(u*w + v - b/(3*a)))), 10) + round(sp.im(sp.nsimplify(sp.simplify(u*w + v - b/(3*a)))), 10)*1j
+        x3 = round(sp.re(sp.nsimplify(sp.simplify(u*w**2 + v*w**2 - b/(3*a)))), 10) + round(sp.nsimplify(sp.im(sp.simplify(u*w**2 + v*w**2 - b/(3*a)))), 10)*1j
 
-    elif round(sp.re(sp.simplify(3*u*v*w**2 + p)), 10) == 0 and round(sp.im(sp.simplify(3*u*v*w**2 + p)), 10) == 0:
-        x1 = round(sp.re(sp.simplify(u + v*w**2 - b/(3*a))), 10) + round(sp.im(sp.simplify(u + v*w**2 - b/(3*a))), 10)*1j
-        x2 = round(sp.re(sp.simplify(u*w + v*w - b/(3*a))), 10) + round(sp.im(sp.simplify(u*w + v*w - b/(3*a))), 10)*1j
-        x3 = round(sp.re(sp.simplify(u*w**2 + v- b/(3*a))), 10) + round(sp.im(sp.simplify(u*w**2 + v - b/(3*a))), 10)*1j
+    elif round(sp.re(sp.nsimplify(sp.simplify(3*u*v*w**2 + p))), 10) == 0 and round(sp.im(sp.nsimplify(sp.simplify(3*u*v*w**2 + p))), 10) == 0:
+        x1 = round(sp.re(sp.nsimplify(sp.simplify(u + v*w**2 - b/(3*a)))), 10) + round(sp.im(sp.nsimplify(sp.simplify(u + v*w**2 - b/(3*a)))), 10)*1j
+        x2 = round(sp.re(sp.nsimplify(sp.simplify(u*w + v*w - b/(3*a)))), 10) + round(sp.im(sp.nsimplify(sp.simplify(u*w + v*w - b/(3*a)))), 10)*1j
+        x3 = round(sp.re(sp.nsimplify(sp.simplify(u*w**2 + v- b/(3*a)))), 10) + round(sp.im(sp.nsimplify(sp.simplify(u*w**2 + v - b/(3*a)))), 10)*1j
 
     else:
         x1, x2, x3 = 'error'
         print("Er is iets mis gegaan")
-
+    
     return sp.nsimplify(x1), sp.nsimplify(x2), sp.nsimplify(x3)
 
 if __name__ == '__main__':
-    x1, x2, x3 = cubic(1, 1, 1, 1)
+    x1, x2, x3 = cubic(-1, 15, 18, 0)
     print("The solutions to the cubic equation are:")
     print(f"x1 = {x1}")
     print(f"x2 = {x2}")

@@ -1,12 +1,12 @@
 # Marc Serrano Altena
 # 07-12-2022
-# Dit programma geeft bij een 2 x 2 matrix de eigenwaarden met de bijbehorende eigenvectoren
+# Dit programma geeft bij een 2x2 en 3x3 matrix de eigenwaarden met de bijbehorende eigenvectoren
 
 import numpy as np
 import sympy as sp
 from polynomial import *
 
-# TODO: 3x3 laten werken met complexe getallen
+
 
 def matrix_2x2():
     global teller
@@ -60,6 +60,7 @@ def matrix_2x2():
     print(eigenvector_1)
     print(f"Bij de eigenwaarde {eigenwaarde_2} hoort de eigenvector:")
     print(eigenvector_2)
+
 
 
 def matrix_3x3():
@@ -168,7 +169,9 @@ def matrix_3x3():
     print(f"{eigenvector_2}")
     print(f"Bij de eigenwaarde {eigenwaarde_3} hoort eigenvector:")
     print(f"{eigenvector_3}")
-    
+
+
+# main program
 matrix_size = 0
 while matrix_size != 2 and matrix_size != 3:
     matrix_size = int(input(f"Is de matrix 2x2 (voer in: 2) of 3x3 (voer in: 3): "))

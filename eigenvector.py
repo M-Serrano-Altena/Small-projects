@@ -140,9 +140,6 @@ def matrix_3x3():
 
         # geo. mult. 3 eigenvectoren
         if np.array_equal(eigenvector, nul_vector):
-
-            print(f"De eigenwaarde is {eigenwaarde} en de counter is {counter_mult2} en de teller is {teller}")
-
             if teller == 1:
                 eigenvector = np.array([[sp.nsimplify(a)], [sp.nsimplify(b)], [sp.nsimplify(c)]])
             

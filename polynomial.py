@@ -37,7 +37,7 @@ def cubic(a, b, c, d):
 
     else:
         x1, x2, x3 = 'error'
-        print("Er is iets mis gegaan")
+        print("Something went wrong.")
     
     return sp.nsimplify(x1), sp.nsimplify(x2), sp.nsimplify(x3)
 

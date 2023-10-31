@@ -53,6 +53,7 @@ def read_text(file_path):
     
     return lines
 
+print("Commands: To quit: exit/.q, read the text in the file: 'path' + .r  ")
 
 while True:
     message = input("User : ")
